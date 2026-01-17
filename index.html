@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DWG — Discover, Work, Go</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/favicon.svg">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-landing">
+  <header class="topbar glass">
+    <a class="brand" href="index.html" aria-label="DWG Home">
+      <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
+          <linearGradient id="dwgLogo" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#3B82F6"/>
+            <stop offset="55%" stop-color="#7C3AED"/>
+            <stop offset="100%" stop-color="#0B1020"/>
+          </linearGradient>
+        </defs>
+        <rect x="6" y="6" width="52" height="52" rx="16" fill="url(#dwgLogo)"/>
+        <path d="M20 41V23h10.5c5 0 8.5 3.3 8.5 9s-3.5 9-8.5 9H20zm6-5h4.3c2.6 0 4.2-1.6 4.2-4s-1.6-4-4.2-4H26v8z"
+              fill="#fff" opacity="0.95"/>
+        <circle cx="45.5" cy="22.5" r="4" fill="#fff" opacity="0.9"/>
+      </svg>
+      <div class="brand-textwrap">
+        <div class="brand-text">DWG</div>
+        <div class="brand-sub">Discover • Work • Go</div>
+      </div>
+    </a>
+
+    <nav class="top-actions">
+      <button class="btn btn-ghost" id="openLogin">Log in</button>
+      <button class="btn btn-primary" id="openSignup">Sign up</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-left">
+        <div class="chip-row">
+          <span class="chip chip-blue">New</span>
+          <span class="muted">All-in-one dashboard for studying in Germany</span>
+        </div>
+
+        <h1 class="h1">
+          Build a clean plan with
+          <span class="grad-text">black • purple • blue</span> style.
+        </h1>
+
+        <p class="lead">
+          Search universities, find dorms, track documents, and export a presentation-ready summary.
+          Your progress is saved automatically.
+        </p>
+
+        <div class="cta">
+          <button class="btn btn-primary btn-lg" id="getStarted">Get Started</button>
+          <a class="btn btn-outline btn-lg" href="#features">Explore Features</a>
+        </div>
+
+        <div class="pill-row">
+          <span class="pill">🎓 Recommendations</span>
+          <span class="pill">🏠 Dorm Finder</span>
+          <span class="pill">✅ Checklist</span>
+          <span class="pill">⬇️ Export</span>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="card glass preview">
+          <div class="preview-top">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="preview-title">Dashboard Preview</span>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi">
+              <div class="kpi-k">Documents</div>
+              <div class="kpi-v"><span class="grad-text">8</span><span class="muted">/12</span></div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-k">Saved Unis</div>
+              <div class="kpi-v">5</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-k">Dorm Apps</div>
+              <div class="kpi-v">3</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-k">Next Deadline</div>
+              <div class="kpi-v">21d</div>
+            </div>
+          </div>
+
+          <div class="spark" aria-hidden="true"></div>
+
+          <div class="note">
+            <span class="badge">Tip</span>
+            Use Export View to show your plan in the presentation.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="section-head">
+        <h2 class="h2">A stronger project demo</h2>
+        <p class="muted">Working UI + saved data + smooth transitions.</p>
+      </div>
+
+      <div class="grid-4">
+        <article class="card feature">
+          <div class="icon i-blue">🎓</div>
+          <h3>University Search + Save</h3>
+          <p class="muted">Add universities to your list. Saved in your browser.</p>
+        </article>
+        <article class="card feature">
+          <div class="icon i-purple">🏠</div>
+          <h3>Dorm Search + Favorites</h3>
+          <p class="muted">Filter dorms and save favorites for later.</p>
+        </article>
+        <article class="card feature">
+          <div class="icon i-blue">✅</div>
+          <h3>Checklist + Progress</h3>
+          <p class="muted">Progress bar updates instantly and persists.</p>
+        </article>
+        <article class="card feature">
+          <div class="icon i-purple">⬇️</div>
+          <h3>Export View</h3>
+          <p class="muted">A clean summary screen you can show or print.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="muted">© DWG — Discover, Work, Go</div>
+      <div class="footer-links">
+        <a class="muted" href="#">Privacy</a>
+        <a class="muted" href="#">Terms</a>
+        <a class="muted" href="#">Contact</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Auth Modal -->
+  <div class="backdrop" id="modalBackdrop" aria-hidden="true"></div>
+
+  <div class="modal" id="authModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="card glass modal-card">
+      <button class="icon-btn close" id="closeModal" aria-label="Close">✕</button>
+
+      <h3 class="h3">Welcome to DWG</h3>
+      <p class="muted">Log in or sign up to open your dashboard.</p>
+
+      <div class="seg">
+        <button class="seg-btn active" id="tabLogin" type="button">Log in</button>
+        <button class="seg-btn" id="tabSignup" type="button">Sign up</button>
+      </div>
+
+      <form id="authForm" class="form">
+        <label>
+          <span>Email</span>
+          <input type="email" id="email" placeholder="your.email@example.com" required>
+        </label>
+
+        <label>
+          <span>Password</span>
+          <input type="password" id="password" placeholder="••••••••" minlength="6" required>
+        </label>
+
+        <label id="confirmWrap" class="hidden">
+          <span>Confirm Password</span>
+          <input type="password" id="confirmPassword" placeholder="••••••••" minlength="6">
+        </label>
+
+        <div class="form-row">
+          <button type="button" class="link" id="forgotBtn">Forgot password?</button>
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit" id="submitBtn">Log in</button>
+        <p class="muted tiny center">Demo: any email/password works.</p>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

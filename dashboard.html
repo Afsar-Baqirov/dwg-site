@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DWG — Dashboard</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/favicon.svg">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-dashboard">
+  <aside class="sidebar glass" id="sidebar">
+    <div class="sidebar-head">
+      <a class="brand" href="dashboard.html" aria-label="DWG Dashboard">
+        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="dwgLogo2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3B82F6"/>
+              <stop offset="55%" stop-color="#7C3AED"/>
+              <stop offset="100%" stop-color="#0B1020"/>
+            </linearGradient>
+          </defs>
+          <rect x="6" y="6" width="52" height="52" rx="16" fill="url(#dwgLogo2)"/>
+          <path d="M20 41V23h10.5c5 0 8.5 3.3 8.5 9s-3.5 9-8.5 9H20zm6-5h4.3c2.6 0 4.2-1.6 4.2-4s-1.6-4-4.2-4H26v8z"
+                fill="#fff" opacity="0.95"/>
+          <circle cx="45.5" cy="22.5" r="4" fill="#fff" opacity="0.9"/>
+        </svg>
+        <div class="brand-textwrap">
+          <div class="brand-text">DWG</div>
+          <div class="brand-sub">Dashboard</div>
+        </div>
+      </a>
+
+      <button class="icon-btn mobile-only" id="toggleSidebar" aria-label="Toggle sidebar">☰</button>
+    </div>
+
+    <nav class="side-nav" id="sideNav">
+      <button class="side-item active" data-target="page-home"><span>🏠</span> Overview</button>
+      <button class="side-item" data-target="page-unis"><span>🎓</span> Universities</button>
+      <button class="side-item" data-target="page-dorms"><span>🏠</span> Dorm Finder</button>
+      <button class="side-item" data-target="page-docs"><span>✅</span> Documents</button>
+      <button class="side-item" data-target="page-export"><span>⬇️</span> Export View</button>
+
+      <a class="side-item" href="https://github.com/" target="_blank" rel="noopener">
+        <span>🔗</span> My GitHub
+      </a>
+
+      <button class="side-item" data-target="page-settings"><span>⚙️</span> Settings</button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <a class="side-item danger" href="index.html"><span>↩</span> Log out</a>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="dash-top glass">
+      <button class="icon-btn mobile-only" id="toggleSidebar2" aria-label="Toggle sidebar">☰</button>
+
+      <div class="dash-top-right">
+        <div class="searchbox">
+          <span class="muted">⌕</span>
+          <input id="quickSearch" type="text" placeholder="Quick search (universities)…">
+        </div>
+
+        <button class="icon-btn" id="resetDemo" title="Reset demo data">⟲</button>
+        <button class="icon-btn" title="Notifications">🔔 <span class="badge">3</span></button>
+        <button class="icon-btn" title="Account">👤</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- Overview -->
+      <section class="page active" id="page-home">
+        <div class="page-head">
+          <div>
+            <h1 class="h2">Welcome back</h1>
+            <p class="muted">Your progress is saved. Use Export View for presentation.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-outline" id="goExport">Open Export View</button>
+            <button class="btn btn-primary" id="quickAddUni">+ Quick add university</button>
+          </div>
+        </div>
+
+        <section class="grid-3">
+          <article class="card glass stat">
+            <div>
+              <div class="muted tiny">Saved Universities</div>
+              <div class="stat-value" id="kpiSavedUnis">0</div>
+            </div>
+            <div class="stat-icon i-blue">🎓</div>
+          </article>
+
+          <article class="card glass stat">
+            <div>
+              <div class="muted tiny">Dorm Favorites</div>
+              <div class="stat-value" id="kpiDormFavs">0</div>
+            </div>
+            <div class="stat-icon i-purple">🏠</div>
+          </article>
+
+          <article class="card glass stat">
+            <div>
+              <div class="muted tiny">Documents Completed</div>
+              <div class="stat-value" id="kpiDocs">0/0</div>
+            </div>
+            <div class="stat-icon i-blue">✅</div>
+          </article>
+        </section>
+
+        <section class="grid-2">
+          <article class="card glass">
+            <div class="card-title">Recent Activity</div>
+            <ul class="activity" id="activity"></ul>
+          </article>
+
+          <article class="card glass">
+            <div class="card-title">Next steps</div>
+            <div class="steps">
+              <div class="step"><span class="step-dot"></span> Save at least 3 universities</div>
+              <div class="step"><span class="step-dot"></span> Add 1 dorm favorite</div>
+              <div class="step"><span class="step-dot"></span> Complete 4 documents</div>
+              <div class="step"><span class="step-dot"></span> Use Export View in your presentation</div>
+            </div>
+          </article>
+        </section>
+      </section>
+
+      <!-- Universities -->
+      <section class="page" id="page-unis">
+        <div class="page-head">
+          <div>
+            <h2 class="h2">Universities</h2>
+            <p class="muted">Search, add, and save. Stored in your browser.</p>
+          </div>
+        </div>
+
+        <section class="grid-2">
+          <article class="card glass">
+            <div class="card-title">Add a university</div>
+
+            <div class="form-grid">
+              <label class="field">
+                <span class="muted tiny">University name</span>
+                <input id="uniName" type="text" placeholder="e.g., Technical University of Munich">
+              </label>
+
+              <label class="field">
+                <span class="muted tiny">City</span>
+                <input id="uniCity" type="text" placeholder="e.g., Munich">
+              </label>
+
+              <label class="field">
+                <span class="muted tiny">Field</span>
+                <input id="uniField" type="text" placeholder="e.g., Computer Science">
+              </label>
+
+              <label class="field">
+                <span class="muted tiny">Type</span>
+                <select id="uniType">
+                  <option>Public</option>
+                  <option>Private</option>
+                </select>
+              </label>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="addUniBtn">Save University</button>
+            <p class="muted tiny">Tip: Add your real choices for the project.</p>
+          </article>
+
+          <article class="card glass">
+            <div class="card-title">Saved universities</div>
+            <div class="list" id="uniList"></div>
+          </article>
+        </section>
+      </section>
+
+      <!-- Dorm Finder -->
+      <section class="page" id="page-dorms">
+        <div class="page-head">
+          <div>
+            <h2 class="h2">Dorm Finder</h2>
+            <p class="muted">Filter by city & budget. Save favorites.</p>
+          </div>
+        </div>
+
+        <article class="card glass">
+          <div class="filters">
+            <label class="field">
+              <span class="muted tiny">City</span>
+              <select id="dormCity">
+                <option>Berlin</option>
+                <option>Munich</option>
+                <option>Hamburg</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="muted tiny">Max Rent (€)</span>
+              <input id="dormMax" type="number" value="550" min="200" max="1500">
+            </label>
+
+            <button class="btn btn-primary" id="searchDormBtn">Search</button>
+          </div>
+        </article>
+
+        <section class="grid-3" id="dormResults"></section>
+
+        <article class="card glass">
+          <div class="card-title">Dorm favorites</div>
+          <div class="list" id="dormFavList"></div>
+        </article>
+      </section>
+
+      <!-- Documents -->
+      <section class="page" id="page-docs">
+        <div class="page-head">
+          <div>
+            <h2 class="h2">Documents</h2>
+            <p class="muted">Checklist with progress. Saved automatically.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-outline" id="markAllDocs">Mark all</button>
+            <button class="btn btn-outline" id="clearDocs">Clear</button>
+          </div>
+        </div>
+
+        <article class="card glass">
+          <div class="progress-row">
+            <div>
+              <div class="muted tiny">Progress</div>
+              <div class="progress-big" id="docsProgressText">0/6 completed</div>
+            </div>
+            <div class="progress-bar" aria-label="Documents progress">
+              <div class="progress-fill" id="docsProgressFill"></div>
+            </div>
+          </div>
+
+          <div class="checklist" id="docsList"></div>
+          <p class="muted tiny">You can change the checklist items in <code>app.js</code>.</p>
+        </article>
+      </section>
+
+      <!-- Export View -->
+      <section class="page" id="page-export">
+        <div class="page-head">
+          <div>
+            <h2 class="h2">Export View</h2>
+            <p class="muted">A clean summary screen for your presentation.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-outline" id="printExport">Print / Save PDF</button>
+          </div>
+        </div>
+
+        <section class="card glass export">
+          <div class="export-head">
+            <div>
+              <div class="export-title">DWG Study Plan Summary</div>
+              <div class="muted" id="exportUserLine">—</div>
+            </div>
+            <div class="export-badges">
+              <span class="pill">Black</span>
+              <span class="pill">Purple</span>
+              <span class="pill">Blue</span>
+            </div>
+          </div>
+
+          <div class="export-grid">
+            <div class="export-box">
+              <div class="export-k">Universities</div>
+              <div class="export-v" id="exportUniCount">0 saved</div>
+              <div class="muted tiny" id="exportUniList">—</div>
+            </div>
+
+            <div class="export-box">
+              <div class="export-k">Dorm Favorites</div>
+              <div class="export-v" id="exportDormCount">0 saved</div>
+              <div class="muted tiny" id="exportDormList">—</div>
+            </div>
+
+            <div class="export-box">
+              <div class="export-k">Documents</div>
+              <div class="export-v" id="exportDocsCount">0/0 completed</div>
+              <div class="muted tiny" id="exportDocsList">—</div>
+            </div>
+          </div>
+
+          <div class="export-footer muted tiny">
+            Tip: Use your real data for the project and print this page as a PDF.
+          </div>
+        </section>
+      </section>
+
+      <!-- Settings -->
+      <section class="page" id="page-settings">
+        <div class="page-head">
+          <div>
+            <h2 class="h2">Settings</h2>
+            <p class="muted">Demo settings (easy to extend).</p>
+          </div>
+        </div>
+
+        <section class="grid-3">
+          <article class="card glass">
+            <div class="card-title">Profile</div>
+            <p class="muted">Change displayed name/country in code or connect backend later.</p>
+            <button class="btn btn-outline btn-block" disabled>Demo</button>
+          </article>
+          <article class="card glass">
+            <div class="card-title">Theme</div>
+            <p class="muted">Dark theme enabled. You can add light mode later.</p>
+            <button class="btn btn-outline btn-block" disabled>Active</button>
+          </article>
+          <article class="card glass">
+            <div class="card-title">Data</div>
+            <p class="muted">Reset saved demo data anytime.</p>
+            <button class="btn btn-primary btn-block" id="resetDemo2">Reset data</button>
+          </article>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
